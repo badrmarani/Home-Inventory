@@ -30,9 +30,13 @@ Il s'agit d'une application réalisée en Python permettant de gérer des stocks
 ## ✨Le projet en quelques images
 Les images suivantes présentent les éléments principaux du projet. Tous les détails sont disponibles dans le [rapport]().
 
-![Eléments du projet](rapport/figures/img1)
+![Eléments du projet](rapport/figures/img1.png)
 
-![Eléments du projet](rapport/figures/img2)
+![Eléments du projet](rapport/figures/img2.png)
+
+![Eléments du projet](rapport/figures/img3.png)
+
+![Eléments du projet](rapport/figures/img4.png)
 
 ## ✨Auteurs
 [Badr-Eddine Marani](mailto:badr-eddine.marani@centrale-casablanca.ma)
