@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS User (
 
     user_name VARCHAR(50) NOT NULL,
     user_password VARCHAR(50) NOT NULL,
-    user_last_session DATETIME NOT NULL,
+    user_last_session DATETIME NULL,
 
     PRIMARY KEY (user_id),
     FOREIGN KEY (stock_id) REFERENCES Stock(stock_id)

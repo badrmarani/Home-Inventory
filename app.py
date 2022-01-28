@@ -5,7 +5,7 @@ import time
 os.system('cls')
 print("""
 	------------------------------------------------------------
-		Welcome, please select an option
+		Bonjour, veuillez sélectionner une option
 	------------------------------------------------------------
 """)
 def home_inv(option=None):
