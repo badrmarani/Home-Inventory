@@ -4,7 +4,6 @@ Conception et réalisation d’une application de gestion des stocks
 ## ✨Présentation
 Il s'agit d'une application réalisée en Python permettant de gérer des stocks.
 
-## ✨Fonctionnalités
 
 ## ✨Pour commencer
 
@@ -24,8 +23,6 @@ Il s'agit d'une application réalisée en Python permettant de gérer des stocks
 1. Dans le terminal, se placer au niveau du fichier `requirements.txt`, puis installer les différents packages nécéssaires avec la commande suivante : `pip install -r requirements.txt`.
 
 1. Lancer l'application avec la commande `python ./app.py`.
-
-## ✨Structure
 
 ## ✨Le projet en quelques images
 Les images suivantes présentent les éléments principaux du projet. Tous les détails sont disponibles dans le [rapport]().
