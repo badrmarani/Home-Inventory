@@ -1,4 +1,4 @@
-## Projet de base de données : Home Invetory 🏠👨‍💻
+## Projet de base de données : Home Inventory 🏠👨‍💻
 Conception et réalisation d’une application de gestion des stocks  
 
 ## ✨Présentation
