@@ -1,0 +1,106 @@
+\documentclass[
+	11pt,
+	oneside,
+	openany,
+	french,
+	onehalfspacing,
+	liststotoc,
+	toctotoc,
+	parskip,
+	headsepline,
+	consistentlayout,
+]{template}
+
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{emoji}
+\usepackage{amsmath,amssymb}
+\usepackage{newpxtext,newpxmath}
+\usepackage{booktabs}
+
+\usepackage[backend=biber,style=numeric,sortcites,natbib=true,sorting=none]{biblatex}
+\addbibresource{example.bib}
+\usepackage{graphicx,wrapfig}
+\usepackage{pdflscape}
+\usepackage{lipsum}
+\usepackage{geometry}
+\geometry{
+	paper=a4paper,
+	inner=2.5cm,
+	outer=2.5cm,
+	top=2.5cm,
+	bottom=2.5cm,
+}
+
+\usepackage{float}
+\usepackage{lipsum} % for filler text
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{pdflscape}
+
+
+
+
+\thesistitle{\textsc{ \Huge{House Inventory \emoji{houses}} \\ \huge Conception et réalisation d’une application de gestion des stocks}}
+\supervisor{M. El Mostafa \textsc{El Rhoudri} \\ M. Mahmoud \textsc{El Hamlaoui}}
+\author{Badr-Eddine \textsc{Marani} \\ Badr-Eddine \textsc{Marani}}
+\university{\href{http://www.centrale-casablanca.ma/}{Ecole Centrale Casablanca}}
+
+\begin{document}
+% 	\frontmatter
+	\pagestyle{plain}
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{.06\textheight}
+			{\scshape\LARGE \univname\par}\vspace{1.5cm}
+			\textsc{\Large Rapport projet de base des données}\\[0.5cm]
+
+			\HRule \\[0.4cm]
+			{\huge \bfseries \ttitle\par}\vspace{0.4cm}
+			\HRule \\[1.5cm]
+
+			\begin{minipage}[t]{0.4\textwidth}
+				\begin{flushleft} \large
+					\emph{Réalisé par :}\\
+					\href{mailto:badr-eddine.marani@centrale-casablanca.ma}{Badr-Eddine \textsc{Marani}}
+
+					\href{mailto:aymen.lakhyar@centrale-casablanca.ma}{Aymen \textsc{Lakhyar}}
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}[t]{0.4\textwidth}
+				\begin{flushright} \large
+					\emph{Encadrants :} \\
+					\href{}{Prof. Mahmoud \textsc{El Hamlaoui}}
+
+					\href{}{Prof. Abderrahim \textsc{Ait Wakrime}}
+
+
+				\end{flushright}
+			\end{minipage}\\[3cm]
+
+
+			\Large Ce rapport est soumis dans le cadre du projet de base de données.\\[0.3cm]
+
+			\vspace*{\fill}
+
+			{\large Année académique 2021 -- 2022}\\[4cm]
+		\end{center}
+	\end{titlepage}
+
+	\tableofcontents
+
+	\listoffigures
+
+	\listoftables
+
+	\include{chapitres/chapitre1}
+	\include{chapitres/chapitre2}
+	\include{chapitres/chapitre3}
+	\include{chapitres/chapitre4}
+	\include{chapitres/chapitre5}
+
+	\appendix
+    	\include{annexes/annexe1}
+
+\end{document}

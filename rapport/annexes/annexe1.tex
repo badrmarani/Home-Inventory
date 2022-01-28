@@ -1,0 +1,203 @@
+% Appendix Template
+
+\chapter{Code Python} \label{annexe1}
+
+Tous les programmes sont disponibles sur la plateforme github.
+
+\section{Fichier \texttt{auth.py}}
+
+\begin{lstlisting}[
+    language=Python
+    showspaces=false,
+    basicstyle=\ttfamily,
+    basicstyle=\tiny,
+    numbers=left,
+    numberstyle=\tiny,
+]
+import mysql.connector
+import os
+import time
+
+from app.interface import home
+
+
+connection = mysql.connector.connect(
+    host = 'localhost',
+    port = '3306',
+    database = 'Home',
+    user = 'root',
+    password = 'toor'
+)
+cursor = connection.cursor()
+
+def gain_access(Username=None, Password=None):
+
+    Username = str(input("Entrez votre nom d'utilisateur :\t"))
+    Password = str(input("Entrez votre mot de passe :\t"))
+
+    if not len(Username or Password) < 1:
+        if True:
+            cursor.execute('SELECT user_name, user_password FROM User')
+            data = cursor.fetchall()
+            if (Username, Password) in data :
+                print("Connexion réussie !")
+                time.sleep(1)
+                home(Username)
+            else :
+                print("Le mot de passe ou le nom d'utilisateur n'existe pas")
+        else:
+            print("Erreur de connexion au système")
+
+    else:
+        print("Veuillez essayer de vous connecter à nouveau.")
+        os.system('cls'); gain_access()
+
+def register(Username=None, Password1=None, Password2=None):
+    Username = input("Entrez votre nom d'utilisateur :\t")
+    Password1 = input("Entrez votre mot de passe :\t")
+    Password2 = input("Confirmez votre mot de passe :\t")
+
+
+    if not len(Password1) <= 6:
+        if not Username == None:
+            if len(Username) < 1:
+                print("Veuillez fournir un nom d'utilisateur")
+                time.sleep(1); os.system('cls');
+                register()
+            else:
+                if Password1 == Password2:
+
+                    cursor.execute("insert into user (user_name, user_password, stock_id) values (%s, %s, 2)", (Username, Password1))
+                    connection.commit()
+
+                    print("Utilisateur créé avec succès !")
+                    print("Veuillez vous connecter pour continuer...")
+                    time.sleep(1); os.system('cls');
+                    gain_access()
+
+                else:
+                    print("Les mots de passe ne sont pas identiques")
+                    time.sleep(1); os.system('cls');
+                    register()
+    else:
+        print("Mot de passe trop court")
+        time.sleep(1); os.system('cls');
+        register()
+\end{lstlisting}
+
+\section{Fichier \texttt{home\_app.py}}
+
+
+\begin{lstlisting}[
+    language=Python
+    showspaces=false,
+    basicstyle=\ttfamily,
+    basicstyle=\tiny,
+    numbers=left,
+    numberstyle=\tiny,
+]
+import mysql.connector
+import time
+import os
+
+connection = mysql.connector.connect(
+    host = 'localhost',
+    port = '3306',
+    database = 'Home',
+    user = 'root',
+    password = 'toor'
+)
+cursor = connection.cursor()
+
+def print_products() :
+    cursor.execute("""
+        SELECT product_name, category_name
+        FROM Product, Category
+        Where Product.category_id = Category.category_id
+    """)
+    data = cursor.fetchall()
+
+    print("Nombre des produits : ", len(data))
+    print("Liste des produits :")
+    i = 0
+    for d in data :
+        print("Produit N°{:<12}\t{:<35}\t\tCatégorie : {:<12}".format(i, d[0], d[1]), end='\n'); i += 1
+
+    if input("Revenir à l'interface d'accueil...") != '' :
+        os.system('cls');
+
+
+def print_results() :
+    cursor.execute("""
+        SELECT product_name, control_results
+        FROM Product, Control, Stock
+        Where
+        	Control.stock_id = Stock.stock_id AND
+            Stock.product_id = Product.product_id
+        GROUP by product_name
+    """)
+    data = cursor.fetchall()
+
+    print("Nombre des produits : ", len(data))
+    print("Liste des produits, ainsi que leurs résultats:")
+    i = 0
+    for d in data :
+        print("Produit N°{:<12}\t{:<30}\t\tRésultats : {:<12}".format(i, d[0], d[1]), end='\n'); i += 1
+
+    if input("Revenir à l'interface d'accueil...") != '' :
+        os.system('cls');
+
+def change_password(Username = None) :
+    Password1 = input("Entrez votre mot de passe :\t")
+    Password2 = input("Confirmez votre mot de passe :\t")
+
+    if Password1 == Password2 :
+
+        cursor.execute("""
+            UPDATE User
+            SET
+                user_password = {}
+            WHERE
+                user_name = {};
+        """.format(Username, Password1))
+        connection.commit()
+
+        print("Mot de passe changée avec succès !")
+
+    if input("Revenir à l'interface d'accueil...") != '' :
+        os.system('cls');
+
+def delete_product() :
+    name = input("Entrez le nom de produit :\t")
+
+    cursor.execute("""
+        DELETE FROM User
+        WHERE product_name = {}
+    """.format(name))
+    connection.commit()
+
+    print("Produit supprimée avec succès !")
+
+
+def add_new_product() :
+    name = input("Entrez le nom de produit :\t")
+    taille = input("Entrez le libellé de sa taille :\t")
+    temp_min = input("Entrez sa temperature minimal :\t")
+    temp_max = input("Entrez sa temperature maximal :\t")
+    desc = input("Entrez une description de produit :\t")
+
+    cursor.execute("""
+        insert into Product
+            (product_name, product_temperature_max, product_temperature_min, product_description, shape_id, information_id, category_id) values
+            ({}, {}, {}, {}, {}, {}, {});
+    """.format(name, taille, temp_min, temp_max, desc, 1, 1, 1))
+    connection.commit()
+
+
+    print("Mot de passe ajoutée avec succès !")
+
+
+    if input("Revenir à l'interface d'accueil...") != '' :
+        os.system('cls');
+
+\end{lstlisting}
