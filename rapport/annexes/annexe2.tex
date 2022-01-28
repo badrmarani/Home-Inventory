@@ -1,0 +1,109 @@
+\chapter{Structure des tables en MySQL}
+\begin{landscape}
+\begin{lstlisting}[
+  language   = SQL,
+  basicstyle = \tiny\ttfamily,
+  columns    = fixed,
+]
+mysql> describe User;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| user_id           | int         | NO   | PRI | NULL    | auto_increment |
+| stock_id          | int         | NO   | MUL | NULL    |                |
+| user_name         | varchar(50) | NO   |     | NULL    |                |
+| user_password     | varchar(50) | NO   |     | NULL    |                |
+| user_last_session | datetime    | YES  |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.08 sec)
+
+mysql> describe product;
++-------------------------+-------------+------+-----+---------+----------------+
+| Field                   | Type        | Null | Key | Default | Extra          |
++-------------------------+-------------+------+-----+---------+----------------+
+| product_id              | int         | NO   | PRI | NULL    | auto_increment |
+| shape_id                | int         | NO   | MUL | NULL    |                |
+| information_id          | int         | NO   | MUL | NULL    |                |
+| category_id             | int         | NO   | MUL | NULL    |                |
+| product_name            | varchar(50) | NO   |     | NULL    |                |
+| product_temperature_max | varchar(50) | NO   |     | NULL    |                |
+| product_temperature_min | varchar(50) | NO   |     | NULL    |                |
+| product_description     | varchar(50) | NO   |     | NULL    |                |
++-------------------------+-------------+------+-----+---------+----------------+
+8 rows in set (0.24 sec)
+
+mysql> describe category;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| category_id   | int         | NO   | PRI | NULL    | auto_increment |
+| category_name | varchar(50) | NO   |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.11 sec)
+
+mysql> describe shape;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| shape_id     | int         | NO   | PRI | NULL    | auto_increment |
+| shape_name   | varchar(50) | NO   |     | NULL    |                |
+| shape_height | varchar(50) | NO   |     | NULL    |                |
+| shape_weight | varchar(50) | NO   |     | NULL    |                |
+| shape_volume | varchar(50) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.04 sec)
+
+mysql> describe information;
++-----------------------------+----------+------+-----+---------+----------------+
+| Field                       | Type     | Null | Key | Default | Extra          |
++-----------------------------+----------+------+-----+---------+----------------+
+| information_id              | int      | NO   | PRI | NULL    | auto_increment |
+| information_expiration_date | datetime | NO   |     | NULL    |                |
+| information_entry_date      | datetime | NO   |     | NULL    |                |
+| information_unit_price      | int      | NO   |     | NULL    |                |
+| information_quantity        | int      | NO   |     | NULL    |                |
++-----------------------------+----------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> describe company;
++---------------------+-------------+------+-----+---------+----------------+
+| Field               | Type        | Null | Key | Default | Extra          |
++---------------------+-------------+------+-----+---------+----------------+
+| company_id          | int         | NO   | PRI | NULL    | auto_increment |
+| product_id          | int         | NO   | MUL | NULL    |                |
+| company_name        | varchar(50) | NO   |     | NULL    |                |
+| company_email       | varchar(50) | NO   |     | NULL    |                |
+| company_description | varchar(50) | NO   |     | NULL    |                |
++---------------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+
+mysql> describe city;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| zip_code  | int         | NO   | PRI | NULL    | auto_increment |
+| city_name | varchar(50) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> describe control;
++-----------------+-----------------------------------------------------------------------------------+------+-----+---------+----------------+
+| Field           | Type                                                                              | Null | Key | Default | Extra          |
++-----------------+-----------------------------------------------------------------------------------+------+-----+---------+----------------+
+| control_id      | int                                                                               | NO   | PRI | NULL    | auto_increment |
+| stock_id        | int                                                                               | NO   | MUL | NULL    |                |
+| control_date    | datetime                                                                          | NO   |     | NULL    |                |
+| control_results | enum('Produit est périmé','Produit est disponible','Produit n est pas disponile') | YES  |     | NULL    |                |
++-----------------+-----------------------------------------------------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe belonging;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| zip_code   | int  | NO   | PRI | NULL    |       |
+| company_id | int  | NO   | PRI | NULL    |       |
++------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+\end{lstlisting}
+\end{landscape}
