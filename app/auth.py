@@ -26,7 +26,7 @@ def gain_access(Username=None, Password=None):
             if (Username, Password) in data :
                 print("Connexion réussie !")
                 time.sleep(1)
-                home()
+                home(Username)
             else :
                 print("Le mot de passe ou le nom d'utilisateur n'existe pas")
         else:
