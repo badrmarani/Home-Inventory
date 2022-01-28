@@ -106,8 +106,8 @@ def add_new_product() :
     cursor.execute("""
         insert into Product
             (product_name, product_temperature_max, product_temperature_min, product_description, shape_id, information_id, category_id) values
-            ({}, {}, {}, {}, {}, {}, {});
-    """.format(name, temp_min, temp_max, desc, 1, 1, 1))
+            ({}, {}, {}, {}, 1, 1, 1)
+    """.format(name, temp_min, temp_max, desc))
     connection.commit()
 
 
