@@ -15,7 +15,7 @@ def print_products() :
     cursor.execute("""
         SELECT product_name, category_name
         FROM Product, Category
-        Where Product.category_id = Category.category_id
+        WHERE Product.category_id = Category.category_id
     """)
     data = cursor.fetchall()
 

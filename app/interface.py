@@ -6,7 +6,7 @@ def home(username = None) :
     print (f"""
         Bonjour {username},
         ------------------------------------------------------------------------------------------------
-        Application                             {time.time}                                Home Invetory
+        Application                                                           Home Invetory
         ------------------------------------------------------------------------------------------------
 
             1 . Afficher la liste des produits
